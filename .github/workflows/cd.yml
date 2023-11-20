@@ -12,24 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Disable Git Credential Caching
-        run: git config --global credential.helper ""
       - name: Use SSH key
         run: |
           mkdir -p ~/.ssh/
           echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
           sudo chmod 600 ~/.ssh/id_rsa
 
-      - name: Debug Info
-        run: |
-          git remote -v
-          cat ~/.ssh/id_rsa
-
-
       - name: Git config
         run: |
           git config --global user.email "cd-user@my-app.com"
           git config --global user.name "cd-user"
+          git remote set-url origin git@github.com:${{ github.repository }}.git
 
       - name: Install
         run: npm ci
