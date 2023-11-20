@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Disable Git Credential Caching
+        run: git config --global credential.helper ""
+
       - name: Use SSH key
         run: |
           mkdir -p ~/.ssh/
