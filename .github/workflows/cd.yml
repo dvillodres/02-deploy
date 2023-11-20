@@ -15,6 +15,11 @@ jobs:
       - name: Disable Git Credential Caching
         run: git config --global credential.helper ""
 
+      - name: Debug Info
+        run: |
+          git remote -v
+          cat ~/.ssh/id_rsa
+
       - name: Use SSH key
         run: |
           mkdir -p ~/.ssh/
