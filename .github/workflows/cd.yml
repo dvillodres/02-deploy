@@ -38,4 +38,4 @@ jobs:
         run: npm run build
 
       - name: Deploy
-        run: npm run deploy --r git@github.com:${{ github.repository }}.git
+        run: npm run deploy -r git@github.com:${{ github.repository }}.git
